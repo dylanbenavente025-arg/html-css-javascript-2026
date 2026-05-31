@@ -7,9 +7,9 @@
 
 | Campo | Dato |
 |-------|------|
-| **Nombre y Apellido** | |
-| **Legajo** | |
-| **Correo electrónico** | |
+| **Nombre y Apellido** | Dylan Benavente |
+| **Legajo** | 29716 |
+| **Correo electrónico** | dylanbenavente025@gmail.com |
 
 ---
 
