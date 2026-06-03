@@ -8,7 +8,7 @@
 
 *Describí en 150–250 palabras qué hace tu solución y cuáles fueron las decisiones principales que tomaste.*
 
-> ✏️ **Tu respuesta aquí: 
+> ✏️ **Tu respuesta aquí:
 Esta solución implementa un formulario de contacto web priorizando estrictamente la accesibilidad y la validación nativa, prescindiendo por completo de JavaScript. La estructura principal se organizó utilizando etiquetas semánticas como `<form>`, `<fieldset>` y `<legend>` para agrupar lógicamente los datos personales y los detalles de la consulta, lo cual es fundamental para que los lectores de pantalla contextualicen la información y no lean campos aislados.
 
 Una decisión clave en la arquitectura del HTML fue vincular explícitamente cada `<label>` con su `input` correspondiente mediante los atributos `for` e `id`. Esto mejora significativamente el área de interacción táctil y asegura que las tecnologías de asistencia anuncien correctamente cada campo. Además, se implementaron validaciones HTML5 (`required`, `pattern`, `type="email"`) combinadas con atributos ARIA (`aria-required`, `aria-describedby`) para vincular los mensajes de error al campo específico. 
@@ -62,7 +62,7 @@ En cuanto a la capa de presentación (CSS), opté por un enfoque rústico pero a
 
 *Si usaste IA, describí brevemente cómo:*
 
-> ✏️ **Tu respuesta (opcional si no usaste IA):**
+> ✏️ **Tu respuesta (opcional si no usaste IA): Utilice IA para poder cumplir estrictamente con los requerimientos del ejercicio y para hacer un boceto que luego modifique.**
 
 ---
 
