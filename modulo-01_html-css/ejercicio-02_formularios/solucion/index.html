@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Agencia de Diseño Tech</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <img src="https://placehold.co/200x50?text=Agencia+Tech" alt="Logo corporativo de la Agencia de Diseño Tech">
+        <nav>
+            <ul>
+                <li><a href="../ejercicio-01_estructura-semantica/solucion/index.html">Inicio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contáctanos</h1>
+        <p>Dejanos tu mensaje acá abajo:</p>
+
+        <form action="/enviar-contacto" method="POST" id="contacto-form">
+            
+            <fieldset>
+                <legend>Datos Personales</legend>
+
+                <div class="campo">
+                    <label for="nombre">Nombre Completo <span aria-required="true" class="asterisco">*</span></label>
+                    <input type="text" id="nombre" name="nombre" required aria-describedby="nombre-error">
+                    <span id="nombre-error" class="error-message">Falta tu nombre.</span>
+                </div>
+
+                <div class="campo">
+                    <label for="email">Correo Electrónico <span aria-required="true" class="asterisco">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required aria-describedby="email-error">
+                    <span id="email-error" class="error-message">Pone un email válido.</span>
+                </div>
+
+                <div class="campo">
+                    <label for="telefono">Teléfono (opcional)</label>
+                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="Ej: 2215554433" aria-describedby="tel-error">
+                    <span id="tel-error" class="error-message">Solo 10 números, sin espacios.</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Detalles de la Consulta</legend>
+
+                <div class="campo">
+                    <p class="etiqueta-falsa">Tipo de contacto: <span aria-required="true" class="asterisco">*</span></p>
+                    <label for="tipo-consulta">
+                        <input type="radio" id="tipo-consulta" name="tipo-contacto" value="consulta" required>
+                        Consulta
+                    </label>
+                    <label for="tipo-sugerencia">
+                        <input type="radio" id="tipo-sugerencia" name="tipo-contacto" value="sugerencia">
+                        Sugerencia
+                    </label>
+                </div>
+
+                <div class="campo">
+                    <label for="motivo">Área de interés <span aria-required="true" class="asterisco">*</span></label>
+                    <input list="motivos-lista" id="motivo" name="motivo" placeholder="Escribí o seleccioná..." required aria-describedby="motivo-error">
+                    <datalist id="motivos-lista">
+                        <option value="Desarrollo Web Frontend">
+                        <option value="Auditoría de Accesibilidad">
+                        <option value="

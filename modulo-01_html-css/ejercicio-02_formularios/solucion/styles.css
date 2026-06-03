@@ -1,0 +1,123 @@
+/* TP-CHECK: 1.2 | BENAVENTE-DYLAN | un label explícito con for es importante porque: vincula el texto con el input, permitiendo que al hacer clic en el texto se active el campo (mejorando el área de clic en celulares) y asegurando que los lectores de pantalla anuncien qué dato se está pidiendo al entrar al input. */
+
+body {
+    background-color: white;
+    color: black;
+    margin: 20px;
+}
+
+header, footer {
+    background-color: #eeeeee;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+main {
+    margin-top: 20px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    background-color: #fcfcfc;
+}
+
+legend {
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid black;
+    padding: 2px 5px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+label, .etiqueta-falsa {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Para los radio y checkbox, que queden al lado del texto */
+input[type="radio"] + label,
+input[type="checkbox"] + label,
+label:has(input[type="radio"]),
+label:has(input[type="checkbox"]) {
+    display: inline;
+}
+
+.asterisco {
+    color: red;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[list],
+textarea {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+/* ESTADOS DEL FORMULARIO (Requisito 1.2.9 y 1.2.10) */
+
+/* Focus bien marcado como pide WCAG */
+input:focus,
+textarea:focus {
+    outline: 4px solid blue;
+    background-color: #e6f2ff;
+}
+
+/* Hover simple */
+input:hover,
+textarea:hover,
+button:hover {
+    border-color: black;
+}
+
+/* Disabled */
+input:disabled {
+    background-color: #cccccc;
+}
+
+/* Validación nativa (Requisito 1.2.8) */
+input:not(:placeholder-shown):invalid,
+textarea:not(:placeholder-shown):invalid {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+}
+
+input:not(:placeholder-shown):valid,
+textarea:not(:placeholder-shown):valid {
+    border: 2px solid green;
+    background-color: #e6ffe6;
+}
+
+/* Mensajes de error */
+.error-message {
+    display: none;
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Mostrar el error cuando está inválido */
+input:not(:placeholder-shown):invalid ~ .error-message,
+textarea:not(:placeholder-shown):invalid ~ .error-message {
+    display: block;
+}
+
+/* Botón rústico */
+button {
+    background-color: #0000cc;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 4px solid orange;
+}
