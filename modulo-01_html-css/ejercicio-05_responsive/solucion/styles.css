@@ -1,0 +1,215 @@
+/* TP-CHECK: 1.5 | BENAVENTE-DYLAN | mobile-first significa: diseñar y codificar primero los estilos base para las pantallas más chicas (celulares) y luego ir agregando complejidad visual y cambiando la distribución solo cuando la pantalla se agranda mediante media queries con min-width. */
+
+:root {
+    --color-primario: #cc0000;
+    --color-fondo: #f5f5f5;
+    --color-texto: #111111;
+    --color-borde: #cccccc;
+}
+
+/* =========================================
+   1. ESTILOS BASE (MOBILE - Menos de 640px)
+   ========================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/* REQ-1.5.9: Imágenes siempre responsivas para que no rompan la pantalla chica */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Layout de bloque único (1 columna para todo el celular) */
+.grid-contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Header y Navbar colapsada para Mobile */
+.header {
+    background-color: white;
+    border-bottom: 3px solid var(--color-primario);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que el menú baje de línea */
+}
+
+/* REQ-1.5.13: Estilo del botón hamburguesa */
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px;
+    border: 1px solid var(--color-borde);
+    border-radius: 3px;
+}
+
+/* Ocultamos el menú por defecto en Mobile */
+.nav-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.nav-menu a {
+    color: var(--color-texto);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-borde);
+    font-weight: bold;
+}
+
+/* REQ-1.5.13: MAGIA SIN JS. Si el checkbox oculto está activado, mostramos el menú hermano */
+.menu-toggle:checked ~ .nav-menu {
+    display: flex;
+}
+
+/* Tipografía Base (Mobile) */
+.main-content h1 {
+    font-size: 24px; /* REQ-1.5.10: Fuente chica para celular */
+    margin-bottom: 5px;
+}
+
+.main-content p {
+    font-size: 16px;
+    line-height: 1.6; /* REQ-1.5.11: Interlineado mayor para legibilidad móvil */
+}
+
+/* Contenedores con estética rústica */
+.main-content, .sidebar, .card {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid var(--color-borde);
+}
+
+.quote {
+    background-color: var(--color-texto);
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    border-left: 5px solid var(--color-primario);
+}
+
+/* Grilla de Tarjetas (1 columna base) */
+.cards-grid {
+    display: grid;
+    /* REQ-1.5.8: auto-fit funciona genial, pero en mobile por defecto empujará a 1 columna por el minmax de 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: white;
+    font-size: 12px;
+    padding: 3px 6px;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.card a {
+    margin-top: auto;
+    background-color: #ddd;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* =========================================
+   2. TABLET (640px o más)
+   ========================================= */
+@media (min-width: 640px) {
+    /* REQ-1.5.5: En tablet eliminamos el menú hamburguesa */
+    .menu-icon {
+        display: none;
+    }
+
+    /* El menú pasa a estar visible siempre y en fila */
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        margin-top: 0;
+        gap: 20px;
+    }
+
+    .nav-menu a {
+        border-bottom: none;
+        padding: 0;
+    }
+
+    /* La cita destacada crece un poco */
+    .quote {
+        font-size: 24px;
+        padding: 30px;
+        border-left-width: 10px;
+    }
+}
+
+
+/* =========================================
+   3. DESKTOP Y TABLET HORIZONTAL (1024px o más)
+   ========================================= */
+@media (min-width: 1024px) {
+    
+    /* REQ-1.5.7: Pasamos de Flex en columna a GRID complejo para Desktop */
+    .grid-contenedor {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "header header"
+            "main-content sidebar"
+            "main-content espacio"
+            "quote quote"
+            "cards cards"
+            "footer footer";
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Asignamos las áreas (igual que el TP anterior) */
+    .header       { grid-area: header; }
+    .main-content { grid-area: main-content; }
+    .sidebar      { grid-area: sidebar; }
+    .quote        { grid-area: quote; }
+    .cards-area   { grid-area: cards; }
+    .footer       { grid-area: footer; }
+
+    /* REQ-1.5.10 y REQ-1.5.11: Ajustes de tipografía para Desktop */
+    .main-content h1 {
+        font-size: 40px; /* Fuente mucho más grande */
+    }
+
+    .main-content p {
+        line-height: 1.5; /* Interlineado un poco más apretado en pantallas grandes */
+    }
+
+    /* REQ-1.5.12: Límite de ancho para que el texto no sea una línea infinita */
+    .seccion-articulo p {
+        max-width: 65ch; /* Limita a unos 65-70 caracteres por línea */
+    }
+}
