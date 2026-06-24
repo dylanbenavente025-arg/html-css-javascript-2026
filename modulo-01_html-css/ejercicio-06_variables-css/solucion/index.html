@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Diseño con Variables CSS</title>
+    
+    <link rel="stylesheet" href="token.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="components.css">
+</head>
+<body>
+
+    <main class="contenedor">
+        
+        <div class="header-acciones">
+            <h1>Sistema de Diseño</h1>
+            <button id="toggle-tema" class="btn btn-secundario">Cambiar Tema 🌓</button>
+        </div>
+
+        <section>
+            <h2>1. Tipografía</h2>
+            <h1>Heading 1 - H1</h1>
+            <h2>Heading 2 - H2</h2>
+            <h3>Heading 3 - H3</h3>
+            <h4>Heading 4 - H4</h4>
+            <p>Este es un texto de párrafo normal. Demuestra cómo se ve la lectura continua aplicando las variables de fuente base y color de texto.</p>
+            <p><small>Este es un texto pequeño para notas o aclaraciones.</small></p>
+        </section>
+
+        <section>
+            <h2>2. Botones</h2>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+                <button class="btn btn-primario">Primario</button>
+                <button class="btn btn-secundario">Secundario</button>
+                <button class="btn btn-outline">Outlined</button>
+                <button class="btn" disabled>Deshabilitado</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Tarjeta de Contenido</h2>
+            <div class="tarjeta">
+                <img src="https://placehold.co/800x300/cccccc/333333?text=Imagen+Placeholder" alt="Placeholder" class="tarjeta-img">
+                <div class="tarjeta-cuerpo">
+                    <h3>Título de la tarjeta</h3>
+                    <p>Cuerpo descriptivo de la tarjeta utilizando la variable de color de superficie para el fondo y sombras sutiles.</p>
+                    <button class="btn btn-primario">Acción</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Badges (Etiquetas)</h2>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <span class="badge badge-info">Info</span>
+                <span class="badge badge-success">Nuevo</span>
+                <span class="badge badge-warning">Pendiente</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Notificaciones (Alertas)</h2>
+            <div class="alerta alerta-info">Esto es un mensaje informativo para el usuario.</div>
+            <div class="alerta alerta-success">¡La operación se realizó con éxito!</div>
+            <div class="alerta alerta-error">Ocurrió un error al intentar procesar la solicitud.</div>
+        </section>
+
+        <section>
+            <h2>6. Formularios</h2>
+            <div class="form-grupo">
+                <label>Input Normal</label>
+                <input type="text" class="form-control" placeholder="Escribe aquí...">
+            </div>
+            
+            <div class="form-grupo">
+                <label>Input Deshabilitado</label>
+                <input type="text" class="form-control" disabled value="No se puede editar">
+            </div>
+
+            <div class="form-grupo">
+                <label>Textarea con Error</label>
+                <textarea class="form-control error" rows="3">Este campo tiene un error de validación.</textarea>
+            </div>
+            
+            <div class="form-grupo">
+                <label>Select</label>
+                <select class="form-control">
+                    <option>Opción 1</option>
+                    <option>Opción 2</option>
+                </select>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="theme.js"></script>
+</body>
+</html>
