@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Animaciones de Alto Rendimiento</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">AgenciaTech</div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Inicio</a>
+            <a href="#" class="nav-link">Características</a>
+            <a href="#" class="nav-link">Testimonios</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content animar clip-reveal">
+            <h1>
+                <span class="animar fade-in palabra" style="--delay: 0.2s">El</span>
+                <span class="animar fade-in palabra" style="--delay: 0.4s">futuro</span>
+                <span class="animar fade-in palabra" style="--delay: 0.6s">llegó.</span>
+            </h1>
+            <p class="animar slide-up" style="--delay: 0.8s">Descubrí nuestro nuevo producto estrella.</p>
+        </div>
+    </header>
+
+    <section class="features">
+        <h2 class="animar fade-in">Nuestras Ventajas</h2>
+        <div class="cards-grid">
+            <div class="card animar slide-side" style="--delay: 0.1s">
+                <h3>Rápido</h3>
+                <p>Optimizado para cargar en milisegundos.</p>
+            </div>
+            <div class="card animar slide-side" style="--delay: 0.3s">
+                <h3>Seguro</h3>
+                <p>Tu información siempre protegida.</p>
+            </div>
+            <div class="card animar slide-side" style="--delay: 0.5s">
+                <h3>Accesible</h3>
+                <p>Diseñado para que todos puedan usarlo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonios">
+        <h2 class="animar slide-up">Lo que dicen los clientes</h2>
+        <div class="testimonios-grid">
+            <blockquote class="animar fade-in" style="--delay: 0.2s">"Me cambió la vida por completo."</blockquote>
+            <blockquote class="animar fade-in" style="--delay: 0.4s">"La mejor inversión del año."</blockquote>
+            <blockquote class="animar fade-in" style="--delay: 0.6s">"Increíble atención al detalle."</blockquote>
+        </div>
+    </section>
+
+    <section class="cta-section animar slide-up">
+        <h2>¿Listo para empezar?</h2>
+        <button class="btn-cta animar-respiracion">Comprar Ahora</button>
+    </section>
+
+    <script src="observer.js"></script>
+</body>
+</html>

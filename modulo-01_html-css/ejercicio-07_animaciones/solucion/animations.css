@@ -1,0 +1,125 @@
+/* ESTADOS INICIALES (Ocultos por defecto, REQ-1.7.4) */
+.animar {
+    opacity: 0;
+    /* Evitamos interacciones mientras están invisibles */
+    pointer-events: none; 
+}
+
+/* LA MAGIA DEL INTERSECTION OBSERVER */
+.animar.visible {
+    /* Mantenemos el estado final al terminar */
+    animation-fill-mode: forwards;
+    pointer-events: auto;
+    /* REQ-1.7.11: Duración saludable (entre 150ms y 1500ms) */
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    /* Consumimos la variable de CSS inline del HTML, con 0s por defecto */
+    animation-delay: var(--delay, 0s); 
+}
+
+/* 1. Fade In */
+.animar.fade-in.visible {
+    animation-name: fadeIn;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 2. Slide from Bottom */
+.animar.slide-up.visible {
+    animation-name: slideUp;
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 3. Slide from Side */
+.animar.slide-side.visible {
+    animation-name: slideSide;
+}
+@keyframes slideSide {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* 4. Técnica Avanzada: Clip Path Reveal (REQ-1.7.13-A) */
+.animar.clip-reveal.visible {
+    animation-name: clipReveal;
+    animation-duration: 1.2s;
+}
+@keyframes clipReveal {
+    from { 
+        opacity: 0; 
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); 
+    }
+    to { 
+        opacity: 1; 
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+    }
+}
+
+/* ANIMACIONES CONTINUAS (Infinitas) */
+
+/* REQ-1.7.6 y REQ-1.7.12: Respiración de Botón */
+.animar-respiracion {
+    animation: respirar 3s ease-in-out infinite;
+}
+@keyframes respirar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* REQ-1.7.8: Loader CSS Puro */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    /* Agregamos esta animación para que se auto-destruya visualmente */
+    animation: desaparecerLoader 2.5s forwards;
+}
+
+@keyframes desaparecerLoader {
+    0% { opacity: 1; height: auto; }
+    80% { opacity: 1; height: auto; } /* Se mantiene visible unos 2 segundos */
+    100% { 
+        opacity: 0; 
+        height: 0; 
+        padding: 0; 
+        visibility: hidden; /* Lo escondemos del todo para que no estorbe */
+    }
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-left-color: var(--color-primario);
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* =======================================================
+   ACCESIBILIDAD: PREFERS REDUCED MOTION (REQ-1.7.10)
+   ======================================================= */
+@media (prefers-reduced-motion: reduce) {
+    /* Matamos todas las animaciones y transiciones de golpe */
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    /* Aseguramos que los elementos se vean aunque no se animen */
+    .animar {
+        opacity: 1 !important;
+    }
+}
+/* TP-CHECK: 1.7 | BENAVENTE-DYLAN | prefers-reduced-motion existe porque: es una directiva fundamental de accesibilidad web, permite que el navegador respete la configuración del sistema operativo del usuario para apagar animaciones, previniendo mareos, dolores de cabeza o convulsiones en personas con trastornos vestibulares o fotosensibilidad. */
